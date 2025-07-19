@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'menu.css' %}">
+
+<section class="menu-section">
+  <h2 class="menu-heading">🧾 Our Menu</h2>
+
+  <div class="menu-grid">
+    {% for item in menu_items %}
+    <div class="menu-card">
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+      <p class="menu-price">₹{{ item.price }}</p>
+      <form action="{% url 'add_to_cart' item.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="cart-button-container">
+    <a href="/cart">
+      <button class="cart-button">🛒 Check Cart</button>
+    </a>
+  </div>
+</section>
+{% endblock %}

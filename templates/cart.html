@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cart{% endblock %}
+{% block body %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">🛒 Your Cart</h2>
+
+  {% if cart_items %}
+  <table class="table table-bordered text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in cart_items %}
+      <tr>
+        <td>{{ entry.item.name }}</td>
+        <td>₹{{ entry.item.price }}</td>
+        <td>
+          <form method="post" action="{% url 'update_quantity' entry.item.id %}" class="d-flex justify-content-center">
+            {% csrf_token %}
+            <button type="submit" name="action" value="decrease" class="btn btn-sm btn-outline-secondary me-2">−</button>
+            <span class="mt-2">{{ entry.quantity }}</span>
+            <button type="submit" name="action" value="increase" class="btn btn-sm btn-outline-secondary ms-2">+</button>
+          </form>
+        </td>
+        <td>₹{{ entry.total_price }}</td>
+        <td>
+          <form method="post" action="{% url 'remove_from_cart' entry.item.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="text-end">
+    <p><strong>Subtotal:</strong> ₹{{ subtotal }}</p>
+    <p><strong>Delivery:</strong> ₹{{ delivery }}</p>
+    <h5><strong>Grand Total:</strong> ₹{{ grand_total }}</h5>
+    <a href="/checkout" class="btn btn-success">Proceed to Checkout</a>
+  </div>
+  {% else %}
+    <p class="text-center"><b> Your cart is empty.</b> <a href="{% url 'menu' %}">Go to Menu</a></p>
+  {% endif %}
+  <div class="mt-4 text-start">
+    <a href="{% url 'menu' %}" class="btn btn-outline-primary">← Continue Shopping</a>
+  </div>
+</div>
+{% endblock %}

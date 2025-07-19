@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="contact-section">
+  <div class="contact-container">
+    <h2 class="contact-heading">📞 Contact <span>BrewBaar</span></h2>
+
+    <p class="contact-intro">
+      Got a question, craving, or compliment? We’d love to hear from you! Feel free to reach out using any of the details below. ☕💬
+    </p>
+
+    <div class="contact-content">
+      <!-- Contact Info -->
+      <div class="contact-box">
+        <h3>📱 Phone</h3>
+        <p>+91 7757805687</p>
+
+        <h3>📧 Email</h3>
+        <p>hello@brewbaarpune.in</p>
+
+        <h3>📍 Address</h3>
+        <p>
+          BrewBaar Café,<br>
+          Sant Tukaram Nagar, Marunji Road,<br>
+          Near Alard College, Pune - 411057
+        </p>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-box">
+        <h3 class="form-heading">✉️ Send us a Message</h3>
+        <form method="post" action="/contactus">
+          {% csrf_token %}
+          <input type="text" placeholder="Your Name" name="name" required class="form-input">
+          <input type="email" placeholder="Your Email" name="email" required class="form-input">
+          <textarea placeholder="Your Message" rows="5" required class="form-textarea"></textarea>
+          <button type="submit" class="form-button">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Thank You{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'checkout.css' %}">
+
+<div class="container mt-5 text-center">
+  <h2 class="mb-4 text-success">✅ Thank You for Your Ordering with BrewBaar!!</h2>
+  <p>Your delicious food is being prepared and will arrive soon. 🍽️</p>
+
+  <hr>
+
+  <h4 class="mt-4">🧾 Order Summary</h4>
+
+  {% if items %}
+  <table class="table table-bordered mt-3">
+    <thead class="table-light">
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in items %}
+      <tr>
+        <td>{{ entry.item.name }}</td>
+        <td>{{ entry.quantity }}</td>
+        <td>₹{{ entry.total_price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p><strong>Subtotal:</strong> ₹{{ subtotal }}</p>
+  <p><strong>Delivery Charges:</strong> ₹{{ delivery }}</p>
+  <h5><strong>Grand Total:</strong> ₹{{ grand_total }}</h5>
+
+  <hr>
+  <p class="mt-3">📦 Estimated Delivery Time: <strong>{{ estimated_time }}</strong></p>
+  {% else %}
+  <p class="text-danger mt-4">Your cart is empty. No items to show.</p>
+  {% endif %}
+
+  <a href="{% url 'clear_cart' %}" class="btn btn-outline-primary mt-4">← Back to Menu</a>
+</div>
+{% endblock %}

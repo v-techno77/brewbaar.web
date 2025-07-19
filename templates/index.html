@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+
+<!-- Main Section with Welcome Text and Banner -->
+<div class="main-section">
+
+  <!-- Left Side: Text Content -->
+  <div class="main-text">
+    <h2>
+      Welcome to <span>BrewBaar ☕</span>
+    </h2>
+    <p>
+      Where every sip of <strong>kadak chaha</strong> meets endless <em>gappa</em> and unbeatable Puneri vibes!<br><br>
+      🫖 Filter coffee brewed with love, 🍽️ misal that hits the spot, and <strong>bun maska</strong> just like old times.<br><br>
+      🎶 Cozy corners, chill tunes, and the heart of Pune in every detail.
+    </p>
+    <a href="/view">
+      <button class="menu-btn">🍽️ Explore Our Menu</button>
+    </a>
+  </div>
+
+  <!-- Right Side: Images -->
+  <div class="main-images">
+    <img src="{% static 'cafeimg.jpg' %}" alt="Café BrewBaar" class="circle-img">
+    <img src="{% static 'burgers_kebab_pizza_036_692x306.jpg' %}" alt="Food Banner" class="banner-img">
+  </div>
+
+</div>
+
+<!-- New Gallery Section -->
+<div class="menu-gallery-section">
+  <h2 class="gallery-title">✨ Must-Try at BrewBaar</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item fade-in">
+          <a href="/menu">
+      <img src="{% static 'Pizza_Margherita.jpeg' %}" alt="Pizza Margherita">
+      <p>Pizza Margherita</p>
+          </a>
+    </div>
+    <div class="gallery-item fade-in">
+          <a href="/menu">
+      <img src="{% static 'Club_Sandwich.jpeg' %}" alt="Club Sandwich">
+      <p>Club Sandwich</p>
+          </a>
+    </div>
+
+    <div class="gallery-item fade-in">
+          <a href="/menu">
+      <img src="{% static 'French_Fries.jpeg' %}" alt="French Fries">
+      <p>French Fries</p>
+          </a>
+    </div>
+    <div class="gallery-item fade-in">
+          <a href="/menu">
+      <img src="{% static 'cold_coff.jpeg' %}" alt="Cold Coffee">
+      <p>Cold Coffee</p>
+          </a>
+    </div>
+    <div class="gallery-item fade-in">
+      <a href="/menu">
+      <img src="{% static 'Masala Tea.jpeg' %}"  alt="Masala Tea">
+      <p>Masala Tea</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

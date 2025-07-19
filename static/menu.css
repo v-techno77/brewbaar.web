@@ -1,0 +1,49 @@
+.menu-section {
+  padding: 60px 10%;
+  background-color: #fff3e0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.menu-heading {
+  text-align: center;
+  color: #8b322c;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.menu-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.menu-price {
+  font-weight: bold;
+}
+
+.add-to-cart-btn {
+  padding: 8px 16px;
+  background-color: #8b322c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cart-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.cart-button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
